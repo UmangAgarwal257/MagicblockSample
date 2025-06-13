@@ -1,0 +1,45 @@
+[toolchain]
+
+[features]
+resolution = true
+skip-lint = false
+
+[programs.localnet]
+apply-velocity = "EXupjwBfvqGdhhHB5EC6Uu2md3Q9jupfJe3zZBT1n34u"
+game = "BYnLN1oSy9YrhUTm1n3RA8Vsf5CzJX2ZQCzpwrhSwUfp"
+movement = "9EYtwjpsefLvPAThLpw1BdMbf4GQoUrrkxfqbo5un29d"
+position = "5iGfyRhCgzhMyncDvAA8qbEgkUJoumtTWov5vLVJ6mpa"
+velocity = "B6Wu6247Q4pF1436VDoqmBsDmkrW2Pcp81rCAdX7K13b"
+
+[registry]
+url = "https://api.apr.dev"
+
+[provider]
+cluster = "localnet"
+wallet = "~/.config/solana/id.json"
+
+[workspace]
+members = ["programs/*", "programs-ecs/components/*", "programs-ecs/systems/*"]
+
+[scripts]
+test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
+
+[test]
+startup_wait = 5000
+shutdown_wait = 2000
+upgradeable = false
+
+[[test.genesis]]
+address = "WorLD15A7CrDwLcLy4fRqtaTb9fbd8o8iqiEMUDse2n"
+program = "tests/fixtures/world.so"
+upgradeable = false
+
+[test.validator]
+bind_address = "0.0.0.0"
+url = "https://rpc.magicblock.app/devnet/"
+ledger = ".bolt/test-ledger"
+rpc_port = 8899
+
+[[test.validator.account]]
+address = "EHLkWwAT9oebVv9ht3mtqrvHhRVMKrt54tF3MfHTey2K"
+filename = "tests/fixtures/registry.json"
