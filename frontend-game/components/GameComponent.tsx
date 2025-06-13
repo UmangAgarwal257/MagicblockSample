@@ -37,13 +37,7 @@ export function GameComponent() {
     setIsLoading(true);
     setStatus('Initializing game...');
     
-    try {
-      // In a real implementation, you would:
-      // 1. Create a new entity
-      // 2. Initialize position and velocity components
-      // 3. Store the entity ID
-      
-      // For now, we'll simulate this with a mock entity
+    try {    
       const mockEntityId = Math.random().toString(36).substring(7);
       setGameState({
         position: { x: 0, y: 0, z: 0 },
@@ -70,12 +64,6 @@ export function GameComponent() {
     setStatus('Moving character...');
     
     try {
-      // In a real implementation, you would:
-      // 1. Create a transaction that calls the movement system
-      // 2. Sign and send the transaction
-      // 3. Update the game state based on the result
-      
-      // For now, we'll simulate the movement
       setGameState(prev => ({
         ...prev,
         position: {
@@ -104,7 +92,6 @@ export function GameComponent() {
     setStatus('Setting velocity...');
     
     try {
-      // In a real implementation, you would update the velocity component
       setGameState(prev => ({
         ...prev,
         velocity: { vx, vy }
@@ -129,7 +116,6 @@ export function GameComponent() {
     setStatus('Applying velocity...');
     
     try {
-      // In a real implementation, you would call the apply-velocity system
       setGameState(prev => ({
         ...prev,
         position: {
